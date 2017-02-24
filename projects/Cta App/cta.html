@@ -18,13 +18,21 @@
 </head>
 
 <body>
-  <select>
-      <option>Westbound Addison Bus #151</option>
-      <option>Eastbound Addison Bus #151</option>
-      <option>Northbound Western Bus #49</option>
-      <option>Southbound Western Bus #49</option>
-  </select>
-  
-  <script src="js/scripts.js"></script>
+  <div class= "cta-selector-container">
+      <h1 class= "cta-header">Upcoming Buses Near Lane Tech</h1>
+    
+      
+      
+      <select class= "cta-selector">
+          <option value="" disabled selected>Search</option>
+          <option>Westbound Addison Bus #151</option>
+          <option>Eastbound Addison Bus #151</option>
+          <option>Northbound Western Bus #49</option>
+          <option>Southbound Western Bus #49</option>
+      </select>
+      <button class= "cta-button" type="button">Search Upcoming Buses</button>
+  </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="cta.js"></script>
 </body>
 </html>
