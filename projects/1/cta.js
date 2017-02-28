@@ -4,7 +4,7 @@ $(function() {
           
           var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
           /*global $ */
-          
+          $( ".cta-button" ).click(function() {
           $.ajax({
               url: apiPassThruUrl,
               dataType: "json",
@@ -21,8 +21,14 @@ $(function() {
             
              
               $.each(data["bustime-response"]["prd"], function(i,v) {
-                  $("body").append("Route #" + v.rt + ", " + v.stpid + "," +  v.prdctdn + "<br><hr>");
+                  $("body").append("Route #" + v.rt + ", " + "Stop ID #" + " " + v.stpid + ", " + " " + v.prdctdn + " " + " minutes until arrival" + "<br><hr>");
+              
+
+                
+                
+                
               })
 
+            });
             });
         });
