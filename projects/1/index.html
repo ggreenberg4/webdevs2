@@ -1,226 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Article Database</title>
-        <style>
-            p, h1 {font-family: cursive;}
-            p {color: black;}
-            h1 {color: white;}
-            p {font-size:2em;line-height:1.5em; margin-left: 24px;}
-            pre {font-size: 4em;}
-            pre {color: red;}
-            h1, p, div {text-align: center}
-            
-            div {
-                background-color:peachpuff; 
-                border: 10px solid black; 
-                border-radius: 10px;
-                min-height:75px;
-                padding:15px;
-                margin-bottom: 10px;
-                border-color: brown;
-                margin: auto;
-                
-            }
-            input {
-                font-size: 24px;
-                
-            }
-            button {
-            font-size: 24px;
-                
-            }
-                
-                
-            
-            
-            body{
-    background-image: url("nytmovies2.jpeg");
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Upcoming Buses Near Lane Tech</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="style.css">
   
-    background-size: 100px, 500px;
-   
-}
-            #results 
-            {
-                background-color:cornsilk;
-               
-            }
-            
-           
-        </style>
-    </head>
-    <body>
-    <h1>NYT Movie Reviews by Gordon and Nick</h1>
+  
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class= "cta-selector-container">
+      <h1 class= "cta-header">Upcoming Buses Near Lane Tech</h1>
     
-    <!-- div for instructions and form -->
-   
-    <div id="form">
-        <p>
-            Enter a search query for a New York Times Movie Review
-        </p>
-        <input id="txtQuery" type="text" value="" placeholder="Enter your search term"></input>
-        <button type="button" id="btnSearch" >Search</button>
- 
-
-
-    </div>
-    
-    <!-- a div to store the results -->
-    <div id="results">
-    
-        
-        
-        
-    </div>
-    
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-       
-       var nytData; 
-       
-        $(function () {    // don't execute code until DOM is ready
-            /*
-                most code should wait for the button click event,
-                but creating and setting some variables *can* be 
-                done when the page loads
-            */
-
-            // api endpoint for the towed vehicle data
-            var baseURL = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
-            
-            // optional filters we're appending: plate
-            // var filters = '?api-key=';
-            
-            // the url; we'll append the plate number in button click
-            var url = baseURL + '?api-key=' + "d5d550101b48401faaea36d023b559b2";   
-            
-           // console.log (url);
-           $("#btnSearch").on("click", function() { 
-               var searchTerm = $("#txtQuery").val();
-                $("#results").html("");
-                var searchUrl = url + "&query=" + searchTerm;
-                console.log(searchUrl);
-                $.getJSON(searchUrl)
-                    .done(function(data){
-                    console.log(data);
-                    nytData = data;
-                    
-                    $.each(data.results, function(index, value){
-                      console.log(value.snippet)
-                       var html = "<h2>"  + "<br>" 
-                       + value.opening_date + "<br>" 
-                       + value.headline  + "</h2><p>" + "<br>" + "<br>"
-                       + value.display_title + "<br>" 
-                       + value.publication_date + "<br>" 
-                       + value.mpaa_rating + "<br>" 
-                       + value.byline + "<br>" 
-                       + value.summary_short + "<br>" 
-                    + value.display_title + "<br>" 
-                       + "<a target='"+"_blank"+"' + href="  + value.link.url + ">View Full Article</a>" + "<br>" + "</p>";
-                       $('#results').append(html);
-                    })
-                })
-                .fail(function(){
-                    
-                }) 
-           
-           });
-            
-           
-            
-            // start with button disabled
-            $("#btnSearch").attr("disabled", true);
-            
-            // enable button only if text in input box
-            $("#txtQuery").keyup(function(){   // change event doesn't work, so using keyup 
-                if ($("#txtQuery").val() == "") {   // if value is empty
-                    $("#btnSearch").attr("disabled", true)  // set disabled
-                }
-                else {
-                    $("#btnSearch").attr("disabled", false)
-                }
-            })
-            
-            
-            
-         
-           
-            // we want to get the data and display on button click
-            $("#btnSearchz").on("click", function() {
-                
-                // each time we search, we need to clear the results
-                $("#results").html("");
-                
-                // get the input plate number
-                //   and append to url in getJSON call
-                var plateNum = $("#txtPlate").val();
-           
-                var urlWithParams = url + plateNum;
-                console.log(urlWithParams);  // verify that it's being created correctly
-           
-                // jQuery command to retrieve json data
-                
-                $.getJSON(urlWithParams)       // append the plateNum
-                    .done (function (data) {    // execute this function when getJSON is done
-                        
-                        console.log(data);
-                        
-                        var numRecords = data.length;  // the length of the array
-                        
-                        // notify of number of records
-                        var message = 
-                            "<p>Records found: "
-                            + numRecords
-                            + "</p>"
-                        
-                        $("#results").append(message);
-                        
-                        
-                        // only loop records if count > 0
-                        if (numRecords > 0) {
-                            // loop through the records
-                            $.each (data , 
-                                function (index, value) {
-                                    // append content to the body 
-                                    var html = "<h2>" 
-                                        + value.state + " " +value.plate 
-                                        + "</h2>"
-                                        + "<p>" 
-                                        + "Make: "
-                                        + value.make
-                                        + "<br>"
-                                        + "Inventory Number: "
-                                        + value.inventory_number
-                                        + "<br>Tow Date: "
-                                        + value.tow_date
-                                        + "<br>Towed to Address: "
-                                        + value.towed_to_address
-                                        + " <a href='https://www.google.com/maps/place/" 
-                                        + value.towed_to_address + " Chicago, IL'>"
-                                        + "Google Maps</a>"
-                                        + "<br>Tow Facility Phone: "
-                                        + value.tow_facility_phone
-                                        + "</p>";
-                                   
-                                   
-                                    $("#results").append(html);
-     
-                            
-                                
-                                }  // end of function
-                            
-                            ); // end of each loop                            
-                        
-                        }   // end of if statement
-
-                    })  // end of getJSON
-            
-            })  // end of button click event
-        
-        }) // end of jQuery wrapper
-        
-        
-    </script>
-    </body>
+      
+      
+      <select class= "cta-selector">
+          <option value="" disabled selected>Search</option>
+          <option>Westbound Addison Bus #151</option>
+          <option>Eastbound Addison Bus #151</option>
+          <option>Northbound Western Bus #49</option>
+          <option>Southbound Western Bus #49</option>
+      </select>
+      <button class= "cta-button" type="button">Search Upcoming Buses</button>
+  </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="cta.js"></script>
+</body>
 </html>

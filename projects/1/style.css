@@ -5,14 +5,16 @@
 }
 .cta-selector-container{
     text-align: center;
+    color: red;
 }
 
 .cta-selector{
-    
+
 }
 .cta-button{
     margin-top: 1rem;
     padding: .5rem 1rem;
+    color: blue;
 }
    
    
