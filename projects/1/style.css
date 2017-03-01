@@ -17,4 +17,13 @@
     color: blue;
 }
    
-   
+#cta-table{
+    color: blue;
+    font-size: larger;
+    text-align: center;
+    
+}
+
+.cta-tables{
+    color: yellow;
+}

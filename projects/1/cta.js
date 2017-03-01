@@ -23,10 +23,10 @@ $(function() {
               $.each(data["bustime-response"]["prd"], function(i,v) {
                 
                     var html = "<tr>"
-               + "<td>" + v.rt + "</td>"
-               + "<td>" + v.rtdir + "</td>"
-                + "<td>" + v.stpid + "</td>"
-               + "<td>" + v.prdctdn + "minutes until arrival</td>"
+               + "<td>" + v.rt + "   " + "</td>"
+               + "<td>" + v.rtdir + "   " +  "</td>"
+                + "<td>" + v.stpid + "   " + "</td>"
+               + "<td>" + v.prdctdn + " " + "minutes until arrival</td>"
                + "</tr>";
                 $("#cta-table").append(html);
                 
