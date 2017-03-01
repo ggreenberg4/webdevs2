@@ -17,7 +17,7 @@ $(function() {
               }
             }).done (function (data) {
               console.log(data);
-              $("body").append("<h1>Bus Routes</h1>");
+              //$("body").append("<h1>Bus Routes</h1>");
             
              
               $.each(data["bustime-response"]["prd"], function(i,v) {
@@ -26,10 +26,11 @@ $(function() {
                + "<td>" + v.rt + "   " + "</td>"
                + "<td>" + v.rtdir + "   " +  "</td>"
                 + "<td>" + v.stpid + "   " + "</td>"
-               + "<td>" + v.prdctdn + " " + "minutes until arrival</td>"
+               + "<td>" + v.prdctdn + " " + "minutes</td>"
                + "</tr>";
-                $("#cta-table").append(html);
+                $(".r"+ v.rt).append(html);
                 
+              
                 
                 
               })
