@@ -11,7 +11,7 @@ $(function() {
               method: 'GET',
               data: {"apiEndpoint": apiEndpoint,
                       "key" : "dYrZ2c4SXpxRwCDhrqns3PehW",
-                      "rt": "152,49",
+                      "rt": "152,49,X49",
                       "stpid": "12527,12569,8147,8195",
                       "format":"json",
               }
@@ -31,7 +31,6 @@ $(function() {
                + "</tr>";
                 $(".r"+ v.rt).append(html);
               })
-
             });
             });
         });

@@ -1,3 +1,7 @@
+body{
+    background:lightsteelblue;
+}
+
 .cta-header{
     font-size: 1.5rem;
     font-family: helvetica;
@@ -38,9 +42,18 @@
     text-align: center;
     
 }
+.rX49{
+    color: Blue;
+    font-size: larger;
+    text-align: center;
+}
+
 table, th, td {
-   border: 1.5px solid black;
+   border: 1.5px Solid black;
    padding: 1rem;
-   border-color: red
+ background-color: lightslategray
+  
+   
+   
      
 }
