@@ -19,7 +19,12 @@
     color: blue;
 }
 .cta-img{
-    size:
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 10rem;
+}
+.cta-img-tracker{
+    padding-right: 10rem;
 }
 .r152{
     color: blue;

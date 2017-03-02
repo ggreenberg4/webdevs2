@@ -26,13 +26,10 @@ $(function() {
                + "<td>" + v.rt + "   " + "</td>"
                + "<td>" + v.rtdir + "   " +  "</td>"
                 + "<td>" + v.stpid + "   " + "</td>"
-               + "<td>" + v.prdctdn + " " + "minutes</td>"
+               + "<td>" + v.prdctdn + "  " + "minutes</td>"
+               + "<td>" + v.des + "  "
                + "</tr>";
                 $(".r"+ v.rt).append(html);
-                
-              
-                
-                
               })
 
             });
