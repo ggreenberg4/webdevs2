@@ -1,24 +1,34 @@
 $(function() {
-          var ctaSelector = $(".cta-selector").val(); //no :selected here
-$(".cta-selector").change(function() {
-  ctaSelector = $(this).val();     
-  alert(ctaSelector);
-});
+          var ctaSelector = $(".cta-selector").val(); 
+          $(".cta-selector").change(function() {
+            ctaSelector = $(this).val();     
+          });
+          
           var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
           
           var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
           /*global $ */
           $( ".cta-button" ).click(function() {
+          if(ctaSelector==152){
+            $(".r152").css("display", "block");
+            $(".r49").css("display", "none");
+            $(".rX49").css("display", "none");
+          }
+            
+          
+          
+          
           $.ajax({
               url: apiPassThruUrl,
               dataType: "json",
               method: 'GET',
               data: {"apiEndpoint": apiEndpoint,
                       "key" : "dYrZ2c4SXpxRwCDhrqns3PehW",
-                      "rt": "152,49,X49",
+                      "rt": ctaSelector,
                       "stpid": "12527,12569,8147,8195",
                       "format":"json",
               }
+              
             }).done (function (data) {
               console.log(data);
               //$("body").append("<h1>Bus Routes</h1>");
