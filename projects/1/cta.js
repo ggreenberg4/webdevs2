@@ -1,5 +1,9 @@
 $(function() {
-
+          var ctaSelector = $(".cta-selector").val(); //no :selected here
+$(".cta-selector").change(function() {
+  ctaSelector = $(this).val();     
+  alert(ctaSelector);
+});
           var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
           
           var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";

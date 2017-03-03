@@ -51,9 +51,13 @@ body{
 table, th, td {
    border: 1.5px Solid black;
    padding: 1rem;
- background-color: lightslategray
-  
-   
-   
-     
+ background-color: lightsteelblue
+
+}
+th{
+    background-color: #99a9bf;
+    font-weight: bold;
+}
+table{
+    margin-top: 2rem;
 }
