@@ -51,7 +51,7 @@ body{
 table, th, td {
    border: 1.5px Solid black;
    padding: 1rem;
- background-color: lightsteelblue
+ background-color: lightsteelblue;
 
 }
 th{
