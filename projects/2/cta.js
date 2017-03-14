@@ -19,14 +19,11 @@ $(function() {
             $(".r49").css("display", "block");
             $(".rX49").css("display", "none");
           }
-             if(ctaSelector==4){
+             if(ctaSelector==49){
             $(".r152").css("display", "none");
             $(".r49").css("display", "none");
             $(".rX49").css("display", "block");
           }
-            
-          
-          
           
           $.ajax({
               url: apiPassThruUrl,
@@ -53,8 +50,10 @@ $(function() {
                + "<td>" + v.prdctdn + "  " + "minutes</td>"
                + "<td>" + v.des + "  "
                + "</tr>";
+               $(".r49").remove(".test");
                 $(".r"+ v.rt).append(html);
               })
             });
-            });
-        });
+          });
+});
+      
