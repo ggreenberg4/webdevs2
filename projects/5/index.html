@@ -44,13 +44,15 @@
           <a id="link5" class="mdl-navigation__link" href="#">Friday</a>
           <a id="link6" class="mdl-navigation__link" href="#">Saturday</a>
           <a id="link7" class="mdl-navigation__link" href="#">Sunday</a>
+          <a id="link8" class="mdl-navigation__link" href="#">Pictures!</a>
+        </nav>
         </nav>
       </div>
       <main class="mdl-layout__content">
         <div id="screen1" class="screen page-content">Monday Schedule 
         <table>
           <tr>
-            <td>6:30am</td> <td>- Wake up</td><br>
+            <td>6:30am</td> <td></td><br>
             <td>6:45am</td> <td></td>
             <td></td> <td></td>
             <td></td> <td></td>
@@ -69,7 +71,8 @@
         <div id="screen4" class="screen page-content">Screen 4</div> 
         <div id="screen5" class="screen page-content">Screen 5</div>
         <div id="screen6" class="screen page-content">Screen 6</div>
-        <div id="screen7" class="screen page-content">Screen 7</div>     
+        <div id="screen7" class="screen page-content">Screen 7</div>
+        <div id="screen8" class="screen page-content">Screen 8</div>     
       </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -92,8 +95,30 @@
                   $(".screen").hide();
                 $("#screen3").show();
             })
-        
-        })
+            
+             $("#link4").on("click", function(){
+                  $(".screen").hide();
+                $("#screen4").show();
+            })
+            
+             $("#link5").on("click", function(){
+                  $(".screen").hide();
+                $("#screen5").show();
+            })
+            
+             $("#link6").on("click", function(){
+                  $(".screen").hide();
+                $("#screen6").show();
+            })
+             $("#link7").on("click", function(){
+                  $(".screen").hide();
+                $("#screen7").show();
+            })
+             $("#link8").on("click", function(){
+                  $(".screen").hide();
+                $("#screen8").show();
+            })
+          })
     </script>
   </body>
 </html>
