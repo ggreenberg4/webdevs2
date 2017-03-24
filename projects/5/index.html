@@ -4,39 +4,27 @@
     <!-- Material Design Lite -->
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         .screen{
             display: none;
         }
     </style>
-  </head>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Title</span>
+          <span class="mdl-layout-title">Gordy's Daily Schedule</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Monday</a>
-            <a class="mdl-navigation__link" href="">Tuesday</a>
-            <a class="mdl-navigation__link" href="">Wednesday</a>
-            <a class="mdl-navigation__link" href="">Thursday</a>
-            <a class="mdl-navigation__link" href="">Friday</a>
-            <a class="mdl-navigation__link" href="">Saturday</a>
-            <a class="mdl-navigation__link" href="">Sunday</a>
-            <a class="mdl-navigation__link" href="">Pictures!</a>
-          </nav>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Gordy's Schedule</span>
-        <nav class="mdl-navigation">
           <a id="link1" class="mdl-navigation__link" href="#">Monday</a>
           <a id="link2" class="mdl-navigation__link" href="#">Tuesday</a>
           <a id="link3" class="mdl-navigation__link" href="#">Wednesday</a>
@@ -45,34 +33,435 @@
           <a id="link6" class="mdl-navigation__link" href="#">Saturday</a>
           <a id="link7" class="mdl-navigation__link" href="#">Sunday</a>
           <a id="link8" class="mdl-navigation__link" href="#">Pictures!</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Gordy's Schedule</span>
+        <nav class="mdl-navigation">
+          <a id="link1-1" class="mdl-navigation__link" href="#">Monday</a>
+          <a id="link2-2" class="mdl-navigation__link" href="#">Tuesday</a>
+          <a id="link3-3" class="mdl-navigation__link" href="#">Wednesday</a>
+          <a id="link4-4" class="mdl-navigation__link" href="#">Thursday</a>
+          <a id="link5-5" class="mdl-navigation__link" href="#">Friday</a>
+          <a id="link6-6" class="mdl-navigation__link" href="#">Saturday</a>
+          <a id="link7-7" class="mdl-navigation__link" href="#">Sunday</a>
+          <a id="link8-8" class="mdl-navigation__link" href="#">Pictures!</a>
         </nav>
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div id="screen1" class="screen page-content">Monday Schedule 
-        <table>
-          <tr>
-            <td>6:30am</td> <td></td><br>
-            <td>6:45am</td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-            <td></td> <td></td>
-          </tr>
-        </table>
+        <div id="screen1" class="screen page-content" align="center">
+        <table dir="ltr" border="1" 
+			summary="purpose/structure for speech output">
+        	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>6:30 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>6:45 AM</td>
+			<td>Eat Breakfast</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 AM</td>
+			<td>School Begins</td>
+			
+		</tr>
+		<tr>
+			<td>11:45 AM</td>
+			<td>Lunch</td>
+			
+		</tr>
+		<tr>
+			<td>4:00 PM</td>
+			<td>Tennis Practice</td>
+			
+		</tr>
+		<tr>
+			<td>6:30 PM</td>
+			<td>Tutor (Math or WebDev or English)</td>
+			
+		</tr>
+		<tr>
+			<td>7:30 Pm</td>
+			<td>Dinner</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 PM</td>
+			<td>Study</td>
+			
+		</tr>
+		<tr>
+			<td>10:30 Pm</td>
+			<td>Sleep</td>
+			
+		</tr>
+	</tbody>
+</table>
         </div>
-        <div id="screen2" class="screen page-content">Screen 2</div>
-        <div id="screen3" class="screen page-content">Screen 3</div>
-        <div id="screen4" class="screen page-content">Screen 4</div> 
-        <div id="screen5" class="screen page-content">Screen 5</div>
-        <div id="screen6" class="screen page-content">Screen 6</div>
-        <div id="screen7" class="screen page-content">Screen 7</div>
-        <div id="screen8" class="screen page-content">Screen 8</div>     
+        <div id="screen2" class="screen page-content" align="center">
+        <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>6:30 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>6:45 AM</td>
+			<td>Eat Breakfast</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 AM</td>
+			<td>School Begins</td>
+			
+		</tr>
+		<tr>
+			<td>11:45 AM</td>
+			<td>Lunch</td>
+			
+		</tr>
+		<tr>
+			<td>4:00 PM</td>
+			<td>Tennis Practice</td>
+			
+		</tr>
+		<tr>
+			<td>5:30 PM</td>
+			<td>East Bank Club</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 Pm</td>
+			<td>Dinner</td>
+			
+		</tr>
+		<tr>
+			<td>8:15 PM</td>
+			<td>Homework</td>
+			
+		</tr>
+		<tr>
+			<td>9:00 Pm</td>
+			<td>Piano</td>
+			
+		</tr>
+		<tr>
+			<td>10:30 Pm</td>
+			<td>Sleep</td>
+			
+		</tr>
+	</tbody>
+</table>
+</div>
+        <div id="screen3" class="screen page-content" align="center">
+           <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>6:30 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>6:45 AM</td>
+			<td>Eat Breakfast</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 AM</td>
+			<td>School Begins</td>
+			
+		</tr>
+		<tr>
+			<td>11:45 AM</td>
+			<td>Lunch</td>
+			
+		</tr>
+		<tr>
+			<td>4:00 PM</td>
+			<td>Tennis Practice</td>
+			
+		</tr>
+		<tr>
+			<td>5:30 PM</td>
+			<td>East Bank Club/Tutor</td>
+			
+		</tr>
+		<tr>
+			<td>7:30 Pm</td>
+			<td>Dinner</td>
+			
+		</tr>
+		<tr>
+			<td>8:30 PM</td>
+			<td>Study/Piano</td>
+			
+		</tr>
+		<tr>
+			<td>11:00 Pm</td>
+			<td>Sleep</td>
+			
+		</tr>
+	</tbody>
+</table> 
+        </div>
+        <div id="screen4" class="screen page-content" align="center">
+            <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>6:30 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>6:45 AM</td>
+			<td>Eat Breakfast</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 AM</td>
+			<td>School Begins</td>
+			
+		</tr>
+		<tr>
+			<td>11:45 AM</td>
+			<td>Lunch</td>
+			
+		</tr>
+		<tr>
+			<td>4:00 PM</td>
+			<td>Tennis Practice</td>
+			
+		</tr>
+		<tr>
+			<td>6:30 PM</td>
+			<td>East Bank Club/Tutor (WebDev)</td>
+			
+		</tr>
+		<tr>
+			<td>7:30 Pm</td>
+			<td>Dinner</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 PM</td>
+			<td>Study</td>
+			
+		</tr>
+		<tr>
+			<td>10:30 Pm</td>
+			<td>Sleep</td>
+			
+		</tr>
+	</tbody>
+</table>
+        </div> 
+        <div id="screen5" class="screen page-content" align="center">
+            <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>6:30 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>6:45 AM</td>
+			<td>Eat Breakfast</td>
+			
+		</tr>
+		<tr>
+			<td>8:00 AM</td>
+			<td>School Begins</td>
+			
+		</tr>
+		<tr>
+			<td>11:45 AM</td>
+			<td>Lunch</td>
+			
+		</tr>
+		<tr>
+			<td>3:15 PM</td>
+			<td>East Bank Club</td>
+			
+		</tr>
+		<tr>
+			<td>6:00 Pm</td>
+			<td>TBD</td>
+			
+		</tr>
+		<tr>
+			<td>6:00AM</td>
+			<td>Sleep</td>
+			
+		</tr>
+	</tbody>
+</table>
+        </div>
+        <div id="screen6" class="screen page-content" align="center">
+            <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>9:00 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>9:00 AM</td>
+			<td>Chemistry Tutoring</td>
+			
+		</tr>
+		<tr>
+			<td>11:00 AM</td>
+			<td>East Bank (Yoga)</td>
+			
+		</tr>
+		<tr>
+			<td>1:00 PM</td>
+			<td>Brunch</td>
+			
+		</tr>
+		<tr>
+			<td>3:00</td>
+			<td>TBD</td>
+			
+		</tr>
+	</tbody>
+</table>
+        </div>
+        <div id="screen7" class="screen page-content" align="center">
+            <table dir="ltr" width="500" border="1" 
+			summary="purpose/structure for speech output">
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	<thead>
+		<tr>
+			<th scope="col">Time</th>
+			<th scope="col">Activity</th>
+			
+		</tr>
+	</thead>
+	
+		<tr>
+			<td>10:00 AM</td>
+			<td>Wake Up</td>
+		
+		</tr>
+	
+	<tbody>
+		<tr>
+			<td>11:00 AM</td>
+			<td>YOGA</td>
+			
+		</tr>
+		<tr>
+			<td>12:30 AM</td>
+			<td>Brunch</td>
+			
+		</tr>
+		<tr>
+			<td>2:00</td>
+			<td>Study Day Begins!</td>
+			
+		</tr>
+		<tr>
+			<td>10:00 PM</td>
+			<td>Sleep</td>
+	</tbody>
+</table>
+        </div>
+        <div id="screen8" class="screen page-content">Photo Page
+        
+        <img src="ipodgordy.png" width="300" height="350" align="middle"></div>     
       </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -81,44 +470,148 @@
             
             $("#screen1").show();
             
+        	//main nav
+            
             $("#link1").on("click", function(){
                 $(".screen").hide();
                 $("#screen1").show();
+                 $("#link1").css("opacity", "1");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", ".4");
             })
              
              $("#link2").on("click", function(){
                   $(".screen").hide();
                 $("#screen2").show();
+                 $("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", "1");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", ".4");
             })
             
              $("#link3").on("click", function(){
                   $(".screen").hide();
                 $("#screen3").show();
+            	$("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", "1");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", ".4");
             })
             
              $("#link4").on("click", function(){
                   $(".screen").hide();
                 $("#screen4").show();
+            	$("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", "1");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", ".4");
             })
             
              $("#link5").on("click", function(){
                   $(".screen").hide();
                 $("#screen5").show();
+            	$("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", "1");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", ".4");
             })
             
              $("#link6").on("click", function(){
                   $(".screen").hide();
                 $("#screen6").show();
+            	$("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", "1");
+				 $("#link7").css("opacity", ".4");
             })
              $("#link7").on("click", function(){
                   $(".screen").hide();
                 $("#screen7").show();
+            	$("#link1").css("opacity", ".4");
+                 $("#link2").css("opacity", ".4");
+                 $("#link3").css("opacity", ".4");
+                 $("#link4").css("opacity", ".4");
+                 $("#link5").css("opacity", ".4");
+                 $("#link6").css("opacity", ".4");
+				 $("#link7").css("opacity", "1");
             })
              $("#link8").on("click", function(){
                   $(".screen").hide();
                 $("#screen8").show();
             })
+            
+            
+            //side nav
+            
+            $("#link1-1").on("click", function(){
+                $(".screen").hide();
+                $("#screen1").show();
+            })
+             
+             $("#link2-2").on("click", function(){
+                  $(".screen").hide();
+                $("#screen2").show();
+            })
+            
+             $("#link3-3").on("click", function(){
+                  $(".screen").hide();
+                $("#screen3").show();
+            })
+            
+             $("#link4-4").on("click", function(){
+                  $(".screen").hide();
+                $("#screen4").show();
+            })
+            
+             $("#link5-5").on("click", function(){
+                  $(".screen").hide();
+                $("#screen5").show();
+            })
+            
+             $("#link6-6").on("click", function(){
+                  $(".screen").hide();
+                $("#screen6").show();
+            })
+             $("#link7-7").on("click", function(){
+                  $(".screen").hide();
+                $("#screen7").show();
+            })
+             $("#link8-8").on("click", function(){
+                  $(".screen").hide();
+                $("#screen8").show();
+            })
           })
+          
     </script>
   </body>
+  <script>
+  if ('serviceWorker' in navigator) {
+    console.log("Will the service worker register?");
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+      }).catch(function(err) {
+        console.log("No it didn't. This happened: ", err)
+      });
+  }
+</script>
 </html>

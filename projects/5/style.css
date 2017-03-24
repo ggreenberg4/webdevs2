@@ -1,0 +1,15 @@
+table{
+    width: 300px;
+    margin-top: 1.5rem;
+}
+
+@media all and (min-width: 450px){
+    table{
+        width: 500px;
+    }
+}
+
+#link1,#link2,#link3,#link4,#link5,
+#link6,#link7{
+    opacity:.4;
+}
