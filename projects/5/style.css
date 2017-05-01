@@ -10,6 +10,9 @@ table{
 }
 
 #link1,#link2,#link3,#link4,#link5,
-#link6,#link7{
+#link6,#link7, #link8{
     opacity:.4;
+}
+.mdl-layout__header-row{
+    background-color: #1b4b9b
 }

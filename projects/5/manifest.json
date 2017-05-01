@@ -3,7 +3,7 @@
   "name": "Gordy's Schedule",
   "icons": [
     {
-      "src":"schedule.jpg",
+      "src":"./schedule.jpg",
       "sizes": "192x192",
       "type": "image/jpg"
     }
