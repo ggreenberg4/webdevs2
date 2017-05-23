@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lane Tech Bus Tracker App</title>
+</head>
+
+<body>
+  <!doctype html>
+  <html lang="en">
+
+
+  <head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Lane Tech Bus Tracker App">
+    <link rel="apple-touch-icon" href="./projects/2/LTCS.jpg">
+    <meta name="msapplication-TileImage" content="./projects/2/Chicago_Transit_Authority_Logo">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <style>
+      #header {
+        color: #FFD700;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      
+      header {
+        background-color: #21421e;
+      }
+      
+      footer {
+        background-color: #FFD700;
+        height: 75px;
+        width: 100%;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Bus Arrival Prediction Times</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Lane Tech Bus Routes</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Your Personal Bus Routes</a>
+          <a href="#fixed-tab-3" class="mdl-layout__tab">Add Your Own Route</a>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Lane Tech Bus Routes</span>
+      </div>
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content">
+
+
+            <header id="header">
+              <h1><img src="https://cdn.evbuc.com/eventlogos/31681757/lanetechlogo.png" alt="Lane Tech Logo" style="width:60px;height:70px;">
+                <b>Lane Tech Bus Routes</b>
+                <img src="https://cdn.evbuc.com/eventlogos/31681757/lanetechlogo.png" alt="Lane Tech Logo" style="width:60px;height:70px;"></h1>
+            </header>
+
+            <div class="row">
+              <div class="col-md-4" id="r152">
+                <h2>Addison</h2>
+              </div>
+              <div class="col-md-4" id="r49">
+                <h2>Western</h2>
+              </div>
+              <div class="col-md-4" id="rX49">
+                <h2>Western Express</h2>
+              </div>
+            </div>
+
+            <footer></footer>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+            <script>
+              /* global $ */
+
+              $(function() {
+
+
+                var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions";
+
+
+                $.ajax({
+                  url: apiPassThruUrl,
+                  dataType: "json",
+                  method: 'GET',
+                  data: {
+                    "apiEndpoint": apiEndpoint,
+                    "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                    "rt": "X49,49,152",
+                    "stpid": "8417,8195,12527,12569",
+                    "format": "json"
+                  }
+                }).done(function(data) {
+                  console.log(data);
+
+                  $.each(data["bustime-response"]["prd"], function(index, value) {
+
+                    if (value.prdctdn === "DUE") {
+                      $("#r" + value.rt).append("Route #" +
+                        value.rt + ", " +
+                        value.rtdir + " to " +
+                        value.des + ": " +
+                        value.prdctdn + "<hr>");
+                    }
+                    else if (value.prdctdn === "DLY") {
+                      $("#r" + value.rt).append("Route #" +
+                        value.rt + ", " +
+                        value.rtdir + " to " +
+                        value.des + ": " +
+                        "DELAYED" + "<hr>");
+                    }
+
+                    else {
+                      $("#r" + value.rt).append("Route #" +
+                        value.rt + ", " +
+                        value.rtdir + " to " +
+                        value.des + ": " +
+                        value.prdctdn + " mins" + "<hr>");
+                    }
+
+                  });
+
+                });
+
+              });
+            </script>
+
+
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content">
+            <!-- Your content goes here -->
+          </div>
+        </section>
+
+
+
+        <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+          <div class="page-content">
+
+            <!DOCTYPE html>
+            <html>
+
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width">
+              <title>Add Personal Bus Routes</title>
+              <link href="index.css" rel="stylesheet" type="text/css" />
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            </head>
+
+            <body>
+
+              <div class="row">
+                <div class="col-md-4" id="routeColumn">
+                  <h2>Select a Route</h2>
+                  <select id="route"></select>
+
+                </div>
+                <div class="col-md-4" id="directionColumn">
+                  <h2>Select a Direction</h2>
+                  <select id="direction"></select>
+                </div>
+                <div class="col-md-4" id="stopColumn">
+                  <h2>Select a Stop</h2>
+                  <select id="stop"></select>
+                </div>
+              </div>
+
+
+              <script>
+                $(function() {
+
+                  /* global $ */
+                  /* global Dexie */
+
+                  var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                  var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getroutes";
+
+
+                  $.ajax({
+                    url: apiPassThruUrl,
+                    dataType: "json",
+                    method: 'GET',
+                    data: {
+                      "apiEndpoint": apiEndpoint,
+                      "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                      "format": "json"
+                    }
+                  }).done(function(data) {
+                    console.log(data);
+                    $("body").append("<h1>Bus Routes</h1>");
+
+                    var option = $("<option>");
+                    option.text("Choose a Route");
+                    $("#route").append(option);
+
+                    $.each(data["bustime-response"]["routes"], function(index, value) {
+                      //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                      var option = $("<option>");
+                      option.attr("value", value.rt);
+                      option.text("Route #" + value.rt + ", " + value.rtnm);
+                      $("#route").append(option);
+
+
+                    });
+
+                  });
+
+
+
+                  $("#route").on("change", function() {
+
+                    $("#direction option").remove();
+                    // get the value
+
+                    var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                    var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getdirections";
+
+
+                    $.ajax({
+                      url: apiPassThruUrl,
+                      dataType: "json",
+                      method: 'GET',
+                      data: {
+                        "apiEndpoint": apiEndpoint,
+                        "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                        "format": "json",
+                        "rt": $("#route").val()
+                      }
+                    }).done(function(data) {
+                      console.log(data);
+
+                      var option = $("<option>");
+                      option.text("Choose a Direction");
+                      $("#direction").append(option);
+
+                      $.each(data["bustime-response"]["directions"], function(index, value) {
+                        //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                        var option = $("<option>");
+                        option.attr("value", value.dir);
+                        option.text(value.dir);
+                        $("#direction").append(option);
+
+
+                      });
+
+                    });
+
+                  });
+
+
+                  $("#direction").on("change", function() {
+
+                    $("#stop option").remove();
+                    // get the value
+
+                    var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                    var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getstops";
+
+
+                    $.ajax({
+                      url: apiPassThruUrl,
+                      dataType: "json",
+                      method: 'GET',
+                      data: {
+                        "apiEndpoint": apiEndpoint,
+                        "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                        "format": "json",
+                        "rt": $("#route").val(),
+                        "dir": $("#direction").val()
+                      }
+                    }).done(function(data) {
+                      console.log(data);
+
+                      var option = $("<option>");
+                      option.text("Choose a Stop");
+                      $("#stop").append(option);
+
+                      $.each(data["bustime-response"]["stops"], function(index, value) {
+                        //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                        var option = $("<option>");
+                        option.attr("value", value.stpnm);
+                        option.text(value.stpnm);
+                        $("#stop").append(option);
+
+
+                      });
+
+                    });
+
+                  });
+                  
+                  
+                var db = new Dexie("personalRoutes");
+                  db.version(1).stores({
+                  routes: '++id,rt,rtnm,dir,stpid,stpnm'
+                 
+                });
+                  
+                db.personalRoutes.add({
+		              rt: $("#route").val(),
+		              rtnm: "",
+		              dir: $("#direction").val(),
+		              stpid: "",
+		              stpnm: $("#stop").val()
+               	});
+                  
+                  
+                  
+
+                });
+                
+              </script>
+
+
+            </body>
+
+            </html>
+
+          </div>
+        </section>
+      </main>
+    </div>
+
+
+
+  </body>
+
+  </html>
+</body>
+
+</html>

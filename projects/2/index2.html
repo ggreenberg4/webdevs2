@@ -104,7 +104,393 @@
           <div class="page-content"><!-- Your content goes here --></div>
         </section>
         <section class="mdl-layout__tab-panel" id="fixed-tab-3">
-          <div class="page-content"><!-- Your content goes here --></div>
+          <div class="page-content"><!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Track CTA Buses</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="manifest" href="./manifest.json">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Weather PWA">
+      <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+      <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+      <meta name="msapplication-TileColor" content="#2F3BA2">
+      <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */ 
+        .navbar {
+          margin-bottom: 0;
+          border-radius: 0;
+        }
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: 450px}
+        /* Set gray background color and 100% height */
+        .sidenav {
+          padding-top: 20px;
+          background-color: #f1f1f1;
+          height: 100%;
+        }
+        /* Set black background color, white text and some padding */
+        footer {
+          background-color: #555;
+          color: white;
+          padding: 15px;
+        }
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+          .sidenav {
+            height: auto;
+            padding: 15px;
+          }
+          .row.content {height:auto;} 
+        }
+        .none {display:none;}
+        para {margin:20px;}
+      </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="index.html"><img src="cta.jpg" alt="Logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid text-center">    
+          <div class="row content">
+            <div class="col-sm-3 sidenav">
+              <p><a href="http://www.transitchicago.com/" target="_blank">The CTA's Website</a></p>
+            </div>
+            <div class="col-sm-9 text-left"> 
+              <h1>CTA Bus Tracker</h1>
+              <p>This app is for showing the predictions for X49, 49, and 152 buses at the Western and Addison stops.</p>
+              <form class="w3-container">
+                  <label>Bus:</label>
+                  <select class="w3-select" name="bus" id="bus">
+                    <option value="" selected>All</option>
+                    <option value="49/X49">49/X49</option>
+                    <option value="152">152</option>
+                  </select><br><br>
+                  <button id="btn" class="w3-btn" type="button">Search</button>
+              </form>
+              <hr>
+              <div id="north" class="w3-card-4 none clear">
+                <header class="w3-container w3-blue">
+                  <h1>Northbound</h1>
+                </header>
+                <div class="w3-container">
+                  <p id="p1" class="para"></p>
+                </div>
+              </div>
+              <hr id="hr1" class="none hr">
+              <div id="south" class="w3-card-4 none clear">
+                <header class="w3-container w3-blue">
+                  <h1>Southbound</h1>
+                </header>
+                <div class="w3-container">
+                  <p id="p2" class="para"></p>
+                </div>
+              </div>
+              <hr id="hr3" class="none hr">
+              <div id="east" class="w3-card-4 none clear">
+                <header class="w3-container w3-blue">
+                  <h1>Eastbound</h1>
+                </header>
+                <div class="w3-container">
+                  <p id="p3" class="para"></p>
+                </div>
+              </div>
+              <hr id="hr2" class="none hr">
+              <div id="west" class="w3-card-4 none clear">
+                <header class="w3-container w3-blue">
+                  <h1>Westbound</h1>
+                </header>
+                <div class="w3-container">
+                  <p id="p4" class="para"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="container-fluid text-center">
+          <p>Made by Gordon Greenberg</p>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+          /* global $ */
+          $(function() {
+            var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+            var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions";
+            var stopIds;
+            $("#search").click(function() {
+              $(".para").html("");
+              $(".clear").addClass("none");
+              $(".hr").addClass("none");
+              if ($("#bus").val() == 152) {
+                stopIds = "12569,12527";
+              }
+              if ($("#bus").val() == "49/X49") {
+                stopIds = "8195,8417";
+              }
+              if ($("#bus").val() == "") {
+                stopIds = "8195,8417,12569,12527";
+              }
+              $.ajax({
+                url: apiPassThruUrl,
+                dataType: "json",
+                method: 'GET',
+                data: {"apiEndpoint": apiEndpoint,
+                        "key" : "VP7Jg5tpX5SdMKRrsuEgS4WjY",
+                        "format":"json",
+                        "stpid": stopIds,
+                        "top":""
+                }
+              }).done (function (data) {
+                $.each(data["bustime-response"]["prd"], function(i,v) {
+                    var delay = v.dly;
+                    if (delay == false) {
+                      delay = "No";
+                    } else {
+                      delay = "Yes";
+                    }
+                    var html = "Stop Name: "
+                    + v.stpnm
+                    + "<br>Route: "
+                    + v.rt
+                    + "<br>Delayed: "
+                    + delay
+                    + "<br>Arrival Time: "
+                    + v.prdtm
+                    + "<br>Minutes Until Arrival: "
+                    + v.prdctdn
+                    + "<hr>";
+                    if (stopIds === "8195,8417") {
+                      $("#north").removeClass("none");
+                      $("#south").removeClass("none");
+                      $("#hr1").removeClass("none");
+                      if (v.rtdir == "Northbound") {
+                        $("#p1").append(html);
+                      } else {
+                        $("#p2").append(html);
+                      }
+                    }
+                    if (stopIds === "12569,12527") {
+                      $("#east").removeClass("none");
+                      $("#west").removeClass("none");
+                      $("#hr2").removeClass("none");
+                      if (v.rtdir == "Eastbound") {
+                        $("#p3").append(html);
+                      } else {
+                        $("#p4").append(html);
+                      }
+                    }
+                    if (stopIds === "8195,8417,12569,12527") {
+                      $("#north").removeClass("none");
+                      $("#south").removeClass("none");
+                      $("#hr1").removeClass("none");
+                      $("#east").removeClass("none");
+                      $("#west").removeClass("none");
+                      $("#hr2").removeClass("none");
+                      $("#hr3").removeClass("none");
+                      if (v.rtdir == "Northbound") {
+                        $("#p1").append(html);
+                      } else if (v.rtdir == "Southbound"){
+                        $("#p2").append(html);
+                      } else if (v.rtdir == "Eastbound") {
+                        $("#p3").append(html);
+                      } else {
+                        $("#p4").append(html);
+                      }
+                    }
+                });
+              });
+            });
+          // Register your service worker:
+          navigator.serviceWorker.register('./sw.js');
+          
+          // Then later, request a one-off sync:
+          navigator.serviceWorker.ready.then(function(swRegistration) {
+            return swRegistration.sync.register('myFirstSync');
+          });
+          });
+          
+        </script>
+<script>
+                $(function() {
+
+                  /* global $ */
+                  /* global Dexie */
+
+                  var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                  var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getroutes";
+
+
+                  $.ajax({
+                    url: apiPassThruUrl,
+                    dataType: "json",
+                    method: 'GET',
+                    data: {
+                      "apiEndpoint": apiEndpoint,
+                      "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                      "format": "json"
+                    }
+                  }).done(function(data) {
+                    console.log(data);
+                    $("body").append("<h1>Bus Routes</h1>");
+
+                    var option = $("<option>");
+                    option.text("Choose a Route");
+                    $("#route").append(option);
+
+                    $.each(data["bustime-response"]["routes"], function(index, value) {
+                      //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                      var option = $("<option>");
+                      option.attr("value", value.rt);
+                      option.text("Route #" + value.rt + ", " + value.rtnm);
+                      $("#route").append(option);
+
+
+                    });
+
+                  });
+
+
+
+                  $("#route").on("change", function() {
+
+                    $("#direction option").remove();
+                    // get the value
+
+                    var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                    var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getdirections";
+
+
+                    $.ajax({
+                      url: apiPassThruUrl,
+                      dataType: "json",
+                      method: 'GET',
+                      data: {
+                        "apiEndpoint": apiEndpoint,
+                        "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                        "format": "json",
+                        "rt": $("#route").val()
+                      }
+                    }).done(function(data) {
+                      console.log(data);
+
+                      var option = $("<option>");
+                      option.text("Choose a Direction");
+                      $("#direction").append(option);
+
+                      $.each(data["bustime-response"]["directions"], function(index, value) {
+                        //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                        var option = $("<option>");
+                        option.attr("value", value.dir);
+                        option.text(value.dir);
+                        $("#direction").append(option);
+
+
+                      });
+
+                    });
+
+                  });
+
+
+                  $("#direction").on("change", function() {
+
+                    $("#stop option").remove();
+                    // get the value
+
+                    var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+
+                    var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getstops";
+
+
+                    $.ajax({
+                      url: apiPassThruUrl,
+                      dataType: "json",
+                      method: 'GET',
+                      data: {
+                        "apiEndpoint": apiEndpoint,
+                        "key": "3FFG56uPzZHaVCK5uPKii72AM",
+                        "format": "json",
+                        "rt": $("#route").val(),
+                        "dir": $("#direction").val()
+                      }
+                    }).done(function(data) {
+                      console.log(data);
+
+                      var option = $("<option>");
+                      option.text("Choose a Stop");
+                      $("#stop").append(option);
+
+                      $.each(data["bustime-response"]["stops"], function(index, value) {
+                        //$("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+
+                        var option = $("<option>");
+                        option.attr("value", value.stpnm);
+                        option.text(value.stpnm);
+                        $("#stop").append(option);
+
+
+                      });
+
+                    });
+
+                  });
+                  
+                  
+                var db = new Dexie("personalRoutes");
+                  db.version(1).stores({
+                  routes: '++id,rt,rtnm,dir,stpid,stpnm'
+                 
+                });
+                  
+                db.personalRoutes.add({
+		              rt: $("#route").val(),
+		              rtnm: "",
+		              dir: $("#direction").val(),
+		              stpid: "",
+		              stpnm: $("#stop").val()
+               	});
+                  
+                  
+                  
+
+                });
+                
+              </script>
+
+
+            </body>
+
+            </html>
+
+          </div>
+        </section>
+      </main>
+    </div>
+
+
         </section>
       </main>
     </div>

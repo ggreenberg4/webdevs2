@@ -1,3 +1,4 @@
+
 $(function() {
           var ctaSelector = $(".cta-selector").val(); 
           $(".cta-selector").change(function() {
@@ -55,5 +56,35 @@ $(function() {
               })
             });
           });
+          
+          // INDEXDB TEST
+          // var request = indexedDB.open("library");
+
+          // request.onupgradeneeded = function() {
+          //   // The database did not previously exist, so create object stores and indexes.
+          //   var db = request.result;
+          //   var store = db.createObjectStore("books", {keyPath: "isbn"});
+          //   var titleIndex = store.createIndex("by_title", "title", {unique: true});
+          //   var authorIndex = store.createIndex("by_author", "author");
+          
+          //   // Populate with initial data.
+          //   store.put({title: "Quarry Memories", author: "Fred", isbn: 123456});
+          //   store.put({title: "Water Buffaloes", author: "Fred", isbn: 234567});
+          //   store.put({title: "Bedrock Nights", author: "Barney", isbn: 345678});
+          // };
+          
+          // request.onsuccess = function() {
+          //   db = request.result["books"];
+          //   var request1 = store.get("books");
+          //     request1.onerror = function(event) {
+          //     // Handle errors!
+          //     console.log("ERROR");
+          // };
+          //     request1.onsuccess = function(event) {
+          //   // Do something with the request.result!
+          //   console.log(request1.result.title);
+          // };
+          // };
+        
+
 });
-      
